@@ -166,6 +166,10 @@ static int set_window(sensor_t *sensor, ov2640_sensor_mode_t mode, int offset_x,
         c.pclk_auto = 1;
         c.clk_div = 7;
     }
+    // Added Double Clock mode from https://github.com/espressif/esp32-camera/commit/10b3d3c2a94ab44c92c199946190bbb4bbab5a95
+    if (sensor->xclk_freq_hz == 10000000) {
+        c.clk_2x = 1;
+    }
 
     if (mode == OV2640_MODE_CIF) {
         regs = ov2640_settings_to_cif;

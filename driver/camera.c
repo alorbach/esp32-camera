@@ -508,6 +508,7 @@ static int i2s_run()
     }
 
     //todo: wait for vsync
+
     ESP_LOGV(TAG, "Waiting for negative edge on VSYNC");
 
     int64_t st_t = esp_timer_get_time();
